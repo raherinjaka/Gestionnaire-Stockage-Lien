@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -189,7 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
-=======
 <?php
 include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -324,18 +322,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .register-link a {
-            color: rgba(255, 255, 255, 0.6); /* Couleur de base discrète */
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease; /* Animation fluide */
+            transition: all 0.3s ease;
             display: inline-block;
         }
 
         .register-link a:hover {
-            color: #00f2fe; /* Change vers le bleu néon au survol */
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); /* Effet de lueur */
-            transform: translateY(-2px); /* Petit saut vers le haut */
+            color: #00f2fe; 
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); 
+            transform: translateY(-2px); 
         }
     </style>
 </head>
@@ -380,5 +378,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
->>>>>>> d896d1d1d23b6c7584381f5a6f942cdd47bd767b
 </html>

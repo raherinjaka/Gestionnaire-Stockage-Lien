@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
 include 'db.php';
@@ -245,7 +244,6 @@ foreach($liens_groupes as $cat) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-=======
 <?php
 session_start();
 include 'db.php';
@@ -253,13 +251,12 @@ if (!isset($_SESSION['user_id'])) { header('Location: login.php'); exit(); }
 
 $user_id = $_SESSION['user_id'];
 
-// --- FONCTION POUR EXTRAIRE L'ID YOUTUBE ---
 function getYouTubeId($url) {
     preg_match('%(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
     return isset($match[1]) ? $match[1] : false;
 }
 
-// --- LOGIQUE D'AJOUT ---
+
 if (isset($_POST['ajouter'])) {
     $stmt = $pdo->prepare("INSERT INTO liens (id_utilisateur, titre, url, categorie) VALUES (?, ?, ?, ?)");
     $stmt->execute([$user_id, $_POST['titre'], $_POST['url'], $_POST['categorie']]);
@@ -267,7 +264,7 @@ if (isset($_POST['ajouter'])) {
     exit();
 }
 
-// --- LOGIQUE DE SUPPRESSION ---
+
 if (isset($_GET['suppr'])) {
     $stmt = $pdo->prepare("DELETE FROM liens WHERE id = ? AND id_utilisateur = ?");
     $stmt->execute([$_GET['suppr'], $user_id]);
@@ -275,12 +272,10 @@ if (isset($_GET['suppr'])) {
     exit();
 }
 
-// --- RÉCUPÉRATION GROUPÉE PAR CATÉGORIE ---
 $stmt = $pdo->prepare("SELECT categorie, id, titre, url FROM liens WHERE id_utilisateur = ? ORDER BY categorie ASC");
 $stmt->execute([$user_id]);
 $liens_groupes = $stmt->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_ASSOC);
 
-// --- CALCUL POUR LA BARRE DE PROGRESSION ---
 $total_liens = 0;
 foreach($liens_groupes as $cat) {
     $total_liens += count($cat);
@@ -316,7 +311,6 @@ foreach($liens_groupes as $cat) {
         .user-name-pro { font-size: 2.2rem; font-weight: 700; margin: 0; }
         .user-name-pro span { color: #00f2fe; text-shadow: 0 0 25px rgba(0, 242, 254, 0.4); }
 
-        /* BARRE DE PROGRESSION */
         .progress-container {
             height: 6px;
             background: rgba(255, 255, 255, 0.05);
@@ -332,7 +326,6 @@ foreach($liens_groupes as $cat) {
         .bg-loisirs { background: #a29bfe; }
         .bg-general { background: #55efc4; }
 
-        /* BOUTON DECONNEXION */
         .btn-logout {
             background: rgba(255, 118, 117, 0.1);
             border: 1px solid rgba(255, 118, 117, 0.3);
@@ -347,7 +340,6 @@ foreach($liens_groupes as $cat) {
         }
         .btn-logout:hover { background: #ff7675; color: white; transform: translateY(-2px); }
 
-        /* PANNEAUX GLASS */
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
@@ -366,7 +358,6 @@ foreach($liens_groupes as $cat) {
         .form-select option { background: #1c1c2b; color: white; }
         .form-control::placeholder { color: rgba(0, 242, 254, 0.4) !important; font-style: italic; font-size: 0.9rem; }
 
-        /* CATEGORIES ET CARTES */
         .category-header {
             color: #00f2fe;
             font-size: 0.85rem;
@@ -502,5 +493,4 @@ foreach($liens_groupes as $cat) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
->>>>>>> d896d1d1d23b6c7584381f5a6f942cdd47bd767b
 </html>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
 include 'db.php';
@@ -200,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     </script>
 </body>
-=======
+
 <?php
 session_start();
 include 'db.php';
@@ -404,5 +403,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     </script>
 </body>
->>>>>>> d896d1d1d23b6c7584381f5a6f942cdd47bd767b
 </html>
